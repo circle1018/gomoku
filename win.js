@@ -1,4 +1,3 @@
-let N=15;
 let W1=Array(N*N).fill(0);// |
 let W2=Array(N*N).fill(0);// _
 let W3=Array(N*N).fill(0);// \
