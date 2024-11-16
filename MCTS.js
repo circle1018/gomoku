@@ -1,4 +1,4 @@
-N=15;
+let N=15;
 let A=Array.from(Array(N),()=>Array(N).fill(0));
 let C=Array.from(Array(N),()=>Array(N).fill(0));
 let p={visit:1,win:0};
