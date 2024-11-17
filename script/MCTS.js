@@ -15,7 +15,7 @@ function MCTS(P,num,depth){
             index.push({x:i,y:j});
         }
     }
-    if(index.length==0||depth>50){
+    if(index.length==0){
         return {win:0,score:0};
     }
     index=index[getRandom(0,index.length-1)];
@@ -47,8 +47,8 @@ function MCTS(P,num,depth){
             C[x+i][y+j]-=chk[i+2][j+2];
         }
     }
-    if(result.win==num)P[key].win+=result.score*0.5;
-    else P[key].win-=result.score*2;
+    if(result.win==num)P[key].win+=result.score*1;
+    else P[key].win-=result.score*5;
     P[key].visit++;
     return result;
 }
