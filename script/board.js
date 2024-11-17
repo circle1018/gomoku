@@ -7,8 +7,6 @@ function placeA(x,y,n){
         for(let j=-1;j<=1;j++){
             if(x+i<0||y+j<0||x+i>N-1||y+j>N-1)continue;
             C[x+i][y+j]+=1;
-            if(Math.max(Math.abs(j),Math.abs(i))==2)C[x+i][y+j]-=0.5;
-            if(Math.abs(j)+Math.abs(i)==3)C[x+i][y+j]-=0.5;
         }
     }
     if(n==1){
@@ -42,7 +40,7 @@ function search(cnt,h1,square,n){
                 index=[{x:Math.floor(ind/N),y:ind%N}];
             }else if(rate==win_rate)index.push({x:Math.floor(ind/N),y:ind%N});
         }
-        console.log("win_rate: "+((win_rate/2+0.5)*100).toFixed(2)+"%");
+        console.log("win_rate: "+((win_rate/2.5+0.8)*100).toFixed(2)+"%");
         index=index[getRandom(0,index.length-1)];
         p=p[index.x*N+index.y];
         placeA(index.x,index.y,1);
@@ -59,10 +57,9 @@ function search(cnt,h1,square,n){
         return;
     }
     for(let i=0;i<100;i++){
-        MCTS(p,n,Acnt);
+        MCTS(p,n,1);
         p.visit++;
     }
-    // console.log(p.win/p.visit);
     h1.textContent=`Thinking(${(Math.min(100,p.visit/cnt*100).toFixed(0))}%)`;
     setTimeout(function(){search(cnt,h1,square,n)},0)
 }
