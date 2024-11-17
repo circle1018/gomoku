@@ -78,6 +78,8 @@ table.addEventListener("click",function(event){
     square.style.zIndex="500";
     square.style.width="100vw";
     square.style.height="100vh";
+    square.style.margin=0;
+    square.style.padding=0;
     document.body.appendChild(square);
 
     const h1=document.createElement("h1");
