@@ -25,7 +25,7 @@ function MCTS(P,num,depth){
             }
         }
     }
-    if(index.length==0||depth-Acnt>50){
+    if(index.length==0||depth>50){
         return {win:0,score:0};
     }
     index=index[getRandom(0,index.length-1)];
@@ -37,9 +37,7 @@ function MCTS(P,num,depth){
     for(let i=-1;i<=1;i++){
         for(let j=-1;j<=1;j++){
             if(x+i<0||y+j<0||x+i>N-1||y+j>N-1)continue;
-            C[x+i][y+j]+=1,chk[i+2][j+2]+=1;
-            if(Math.max(Math.abs(j),Math.abs(i))==2)C[x+i][y+j]-=0.5,chk[i+2][j+2]-=0.5;
-            if(Math.abs(j)+Math.abs(i)==3)C[x+i][y+j]-=0.5,chk[i+2][j+2]-=0.5;
+            C[x+i][y+j]+=1,chk[i+2][j+2]+=1;;
         }
     }
     let key=x*N+y;
