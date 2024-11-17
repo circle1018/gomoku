@@ -58,10 +58,8 @@ function search(cnt,h1,square,n){
         Acnt+=2;
         return;
     }
-    for(let i=0;i<200;i++){
-        let result=MCTS(p,n,Acnt);
-        if(result.win==n)p.win+=result.score;
-        else p.win-=result.score;
+    for(let i=0;i<100;i++){
+        MCTS(p,n,Acnt);
         p.visit++;
     }
     // console.log(p.win/p.visit);
@@ -111,10 +109,8 @@ table.addEventListener("click",function(event){
         return;
     }
     setTimeout(function(){
-        if(!(x*N+y in p)){
-            p={win:0,visit:1};
-        }else p=p[x*N+y];
-        search(20000,h1,square,1);
+        p={win:0,visit:1};
+        search(10000,h1,square,1);
     },0);
 });
 placeA(7,7,1);
