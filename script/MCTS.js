@@ -7,22 +7,12 @@ function getRandom(min,max){
 }
 function MCTS(P,num,depth){
     //init
-    let index=[],weight=-1,visit;
+    let index=[];
     for(let i=0;i<N;i++){
         for(let j=0;j<N;j++){
             if(A[i][j])continue;
             if(C[i][j]<1)continue;
-            let w=P[i*N+j]?P[i*N+j].win:0;
-            let v=P[i*N+j]?P[i*N+j].visit:1;
-            let score=(w/v)/2.5+0.8+Math.sqrt(2*Math.log(P.visit/v));
-            score=1;
-            if(score>weight){
-                weight=score;
-                visit=v;
-                index=[{x:i,y:j}];
-            }else if(score==weight){
-                index.push({x:i,y:j});
-            }
+            index.push({x:i,y:j});
         }
     }
     if(index.length==0||depth>50){
@@ -37,7 +27,7 @@ function MCTS(P,num,depth){
     for(let i=-1;i<=1;i++){
         for(let j=-1;j<=1;j++){
             if(x+i<0||y+j<0||x+i>N-1||y+j>N-1)continue;
-            C[x+i][y+j]+=1,chk[i+2][j+2]+=1;;
+            C[x+i][y+j]+=1,chk[i+2][j+2]+=1;
         }
     }
     let key=x*N+y;
