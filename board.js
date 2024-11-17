@@ -33,8 +33,7 @@ function search(cnt,h1,square,n){
         table.rows[index.x].cells[index.y].innerText="\u25EF";
         if(win(index.x,index.y,1)){
             h1.textContent="LOSE";
-            h1.style.fontSize="100px";
-            square.style.backgroundColor="rgb(255,255,255,0.5)";
+            square.style.backgroundColor="rgba(255,255,255,0.5)";
             done=1;
             return;
         }
@@ -64,22 +63,20 @@ table.addEventListener("click",function(event){
     table.rows[x].cells[y].innerText="\u26AA";
     table.rows[lx].cells[ly].innerText="\u26AB";
     const square=document.createElement('div');
-    square.style.backgroundColor="rgb(255,255,255,0.2)";
+    square.style.backgroundColor="rgba(255,255,255,0.2)";
     square.style.zIndex="500";
     square.style.width="100vw";
     square.style.height="100vh";
     document.body.appendChild(square);
 
-    const h1=document.createElement("h1");
+    const h1=document.createElement("h3");
     h1.textContent="Thinking(0%)";
     h1.style.position="absolute";
     h1.style.zIndex="1000";
-    h1.style.fontSize="40px";
     document.body.appendChild(h1);
     if(win(x,y,2)){
         h1.textContent="WIN";
-        h1.style.fontSize="100px";
-        square.style.backgroundColor="rgb(255,255,255,0.5)";
+        square.style.backgroundColor="rgba(255,255,255,0.5)";
         done=1;
         return;
     }
