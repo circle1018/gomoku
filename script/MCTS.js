@@ -33,8 +33,8 @@ function MCTS(P,num,depth){
     let y=index.y;
     A[x][y]=num;
     let chk=Array.from(Array(5),()=>Array(5).fill(0));
-    for(let i=-2;i<=2;i++){
-        for(let j=-2;j<=2;j++){
+    for(let i=-1;i<=1;i++){
+        for(let j=-1;j<=1;j++){
             if(x+i<0||y+j<0||x+i>N-1||y+j>N-1)continue;
             C[x+i][y+j]+=1,chk[i+2][j+2]+=1;
             if(Math.max(Math.abs(j),Math.abs(i))==2)C[x+i][y+j]-=0.5,chk[i+2][j+2]-=0.5;

@@ -3,8 +3,8 @@ let done=0,doing=0,Acnt=0;
 let img=document.createElement("img");
 function placeA(x,y,n){
     A[x][y]=n;
-    for(let i=-2;i<=2;i++){
-        for(let j=-2;j<=2;j++){
+    for(let i=-1;i<=1;i++){
+        for(let j=-1;j<=1;j++){
             if(x+i<0||y+j<0||x+i>N-1||y+j>N-1)continue;
             C[x+i][y+j]+=1;
             if(Math.max(Math.abs(j),Math.abs(i))==2)C[x+i][y+j]-=0.5;
