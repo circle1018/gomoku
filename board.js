@@ -34,14 +34,11 @@ function search(cnt,h1,square,n){
         if(win(index.x,index.y,1)){
             h1.textContent="LOSE";
             h1.style.fontSize="100px";
-            square.style.backgroundColor="rgba(255,255,255,0.5)";
+            square.style.backgroundColor="rgb(255,255,255,0.5)";
             done=1;
             return;
         }
-        setTimeout(function(){
-            doing=0;
-            search2();
-        },0);
+        doing=0;
         square.remove();
         h1.remove();
         Acnt+=2;
@@ -67,7 +64,7 @@ table.addEventListener("click",function(event){
     table.rows[x].cells[y].innerText="\u26AA";
     table.rows[lx].cells[ly].innerText="\u26AB";
     const square=document.createElement('div');
-    square.style.backgroundColor="rgba(255,255,255,0.2)";
+    square.style.backgroundColor="rgb(255,255,255,0.2)";
     square.style.zIndex="500";
     square.style.width="100vw";
     square.style.height="100vh";
@@ -82,7 +79,7 @@ table.addEventListener("click",function(event){
     if(win(x,y,2)){
         h1.textContent="WIN";
         h1.style.fontSize="100px";
-        square.style.backgroundColor="rgba(255,255,255,0.5)";
+        square.style.backgroundColor="rgb(255,255,255,0.5)";
         done=1;
         return;
     }
@@ -120,14 +117,3 @@ for(let i=0;i<N;i++){
         table.rows[i].cells[j].style.border='none';
     }
 }
-function search2(){
-    if(doing||done||p.visit>20000)return;
-    for(let i=0;i<1000;i++){
-        let result=MCTS(p,2,Acnt);
-        if(result.win==2)p.win+=result.score;
-        else p.win-=result.score;
-        p.visit++;
-    }
-    setTimeout(function(){search2()},0)
-}
-search2();
