@@ -38,7 +38,7 @@ function MCTS(P,num,depth){
     //result
     let result;
     if(win(x,y,num))result={win:num,score:1};
-    else result=MCTS(P,(num==1?2:1),depth+1);
+    else result=MCTS(P[key],(num==1?2:1),depth+1);
     A[x][y]=0;
     win(x,y,0);
     for(let i=-2;i<=2;i++){
