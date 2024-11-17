@@ -1,5 +1,5 @@
 const table=document.getElementById("table2");
-let done=0,doing=0,Acnt=0,lx=7,ly=7;
+let done=0,doing=0,Acnt=0;
 function placeA(x,y,n){
     A[x][y]=n;
     for(let i=-2;i<=2;i++){
@@ -29,8 +29,11 @@ function search(cnt,h1,square,n){
         index=index[getRandom(0,index.length-1)];
         p=p[index.x*N+index.y];
         placeA(index.x,index.y,1);
-        lx=index.x,ly=index.y;
-        table.rows[index.x].cells[index.y].innerText="\u25EF";
+        const img=document.createElement("img");
+        img.src="./black.png";
+        img.style.width="100%";
+        img.style.height="100%";
+        table.rows[index.x].cells[index.y].appendChild(img);
         if(win(index.x,index.y,1)){
             h1.textContent="LOSE";
             square.style.backgroundColor="rgba(255,255,255,0.5)";
@@ -60,8 +63,11 @@ table.addEventListener("click",function(event){
     if(A[x][y]||y>N-1||x>N-1||y<0||x<0)return;
     doing=1;
     placeA(x,y,2);
-    table.rows[x].cells[y].innerText="\u26AA";
-    table.rows[lx].cells[ly].innerText="\u26AB";
+    const img=document.createElement("img");
+    img.src="./white.png";
+    img.style.width="100%";
+    img.style.height="100%";
+    table.rows[x].cells[y].appendChild(img);
     const square=document.createElement('div');
     square.style.backgroundColor="rgba(255,255,255,0.2)";
     square.style.zIndex="500";
@@ -69,7 +75,7 @@ table.addEventListener("click",function(event){
     square.style.height="100vh";
     document.body.appendChild(square);
 
-    const h1=document.createElement("h3");
+    const h1=document.createElement("h1");
     h1.textContent="Thinking(0%)";
     h1.style.position="absolute";
     h1.style.zIndex="1000";
@@ -90,8 +96,11 @@ table.addEventListener("click",function(event){
         index=index[getRandom(0,index.length-1)];
         placeA(index.x,index.y,1);
         win(index.x,index.y,1);
-        lx=index.x,ly=index.y;
-        table.rows[index.x].cells[index.y].innerText="\u25EF";
+        const img=document.createElement("img");
+        img.src="./black.png";
+        img.style.width="100%";
+        img.style.height="100%";
+        table.rows[index.x].cells[index.y].appendChild(img);
         p={win:0,visit:1};
         square.remove();
         h1.remove();
@@ -108,7 +117,11 @@ table.addEventListener("click",function(event){
 });
 placeA(7,7,1);
 win(7,7,1);
-table.rows[7].cells[7].innerText="\u25EF";
+const img=document.createElement("img");
+img.src="./black.png";
+img.style.width="100%";
+img.style.height="100%";
+table.rows[7].cells[7].appendChild(img);
 for(let i=0;i<N;i++){
     for(let j=0;j<N;j++){
         table.rows[i].cells[j].style.border='none';
