@@ -76,8 +76,8 @@ table.addEventListener("click",function(event){
     const square=document.createElement('div');
     square.style.backgroundColor="rgba(255,255,255,0.2)";
     square.style.zIndex="500";
-    square.style.width="100vw";
-    square.style.height="100vh";
+    square.style.width="100%";
+    square.style.height="100%";
     square.style.margin=0;
     square.style.padding=0;
     document.body.appendChild(square);
