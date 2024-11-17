@@ -15,6 +15,7 @@ function MCTS(P,num,depth){
             let w=P[i*N+j]?P[i*N+j].win:0;
             let v=P[i*N+j]?P[i*N+j].visit:1;
             let score=(w/v)/2.5+0.8+Math.sqrt(2*Math.log(P.visit/v));
+            score=1;
             if(score>weight){
                 weight=score;
                 visit=v;
