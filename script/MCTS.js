@@ -25,7 +25,7 @@ function MCTS(P,num,depth){
             }
         }
     }
-    if(index.length==0||depth-Acnt>20){
+    if(index.length==0||depth-Acnt>50){
         return {win:0,score:0};
     }
     index=index[getRandom(0,index.length-1)];
