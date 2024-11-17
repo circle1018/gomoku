@@ -83,7 +83,7 @@ function search(cnt,h1,square,n){
                 A[i][j]=2;
                 if(win(i,j)){
                     placeA(i,j,1);
-                    win()
+                    win(i,j)
                     doing=0;
                     square.remove();
                     h1.remove();
