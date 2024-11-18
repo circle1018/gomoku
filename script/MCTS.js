@@ -48,7 +48,7 @@ function MCTS(P,num,depth){
         }
     }
     if(result.win==num)P[key].win+=result.score*1;
-    else P[key].win-=result.score*5;
+    else P[key].win-=result.score*4;
     P[key].visit++;
     return result;
 }
