@@ -40,5 +40,5 @@ function win(x,y){
         m=Math.max(m,W4[i*N+j]);
         if(t==W4[i*N+j]&&(i!=x&&j!=y))break;
     }
-    return m>4?5:0;
+    return m>4?1:0;
 }

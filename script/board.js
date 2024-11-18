@@ -40,7 +40,6 @@ function search(cnt,h1,square,n){
                 index=[{x:Math.floor(ind/N),y:ind%N}];
             }else if(rate==win_rate)index.push({x:Math.floor(ind/N),y:ind%N});
         }
-        console.log("win_rate: "+((win_rate/2.5+0.8)*100).toFixed(2)+"%");
         index=index[getRandom(0,index.length-1)];
         p=p[index.x*N+index.y];
         placeA(index.x,index.y,1);
@@ -100,7 +99,7 @@ table.addEventListener("click",function(event){
         index=index[getRandom(0,index.length-1)];
         placeA(index.x,index.y,1);
         win(index.x,index.y,1);
-        p={win:0,visit:1};
+        p={win:0,visit:0};
         square.remove();
         h1.remove();
         doing=0;
@@ -108,7 +107,7 @@ table.addEventListener("click",function(event){
         return;
     }
     setTimeout(function(){
-        p={win:0,visit:1};
+        p={win:0,visit:0};
         search(10000,h1,square,1);
     },0);
 });
