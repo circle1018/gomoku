@@ -1,5 +1,6 @@
 const table=document.getElementById("table2");
 let done=0,doing=0,Acnt=0;
+let stone=["black","white"];
 let img=document.createElement("img");
 function placeA(x,y,n){
     A[x][y]=n;
@@ -10,17 +11,17 @@ function placeA(x,y,n){
         }
     }
     if(n==1){
-        img.src="./images/white.png";
+        img.src="./images/${stone[1]}.png";
         img=document.createElement("img");
-        img.src="./images/black_last.png";
+        img.src="./images/${stone[0]}_last.png";
         img.style.width="100%";
         img.style.height="100%";
         table.rows[x].cells[y].appendChild(img);
     }
     if(n==2){
-        img.src="./images/black.png";
+        img.src="./images/${stone[0]}.png";
         img=document.createElement("img");
-        img.src="./images/white_last.png";
+        img.src="./images/${stone[1]}_last.png";
         img.style.width="100%";
         img.style.height="100%";
         table.rows[x].cells[y].appendChild(img);
@@ -115,7 +116,7 @@ function start(){
     if(document.querySelector('input[name="stone"]:checked').value=="White"){
         placeA(7,7,1);
         win(7,7,1);
-    }
+    }else stone=["white","black"];
     document.getElementsByClassName("trans-background")[0].remove();
 }
 for(let i=0;i<N;i++){
