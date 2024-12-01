@@ -76,7 +76,7 @@ table.addEventListener("click",function(event){
     const h1=document.createElement("h1");
     h1.textContent="Thinking";
     h1.style.position="absolute";
-    h1.style.fontSize="3em";
+    h1.style.fontSize="3rem";
     square.appendChild(h1);
     document.body.appendChild(square);
     if(win(x,y,2)){
