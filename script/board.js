@@ -11,9 +11,9 @@ function placeA(x,y,n){
         }
     }
     if(n==1){
-        img.src="./images/${stone[1]}.png";
+        img.src=`./images/${stone[1]}.png`;
         img=document.createElement("img");
-        img.src="./images/${stone[0]}_last.png";
+        img.src=`./images/${stone[0]}_last.png`;
         img.style.width="100%";
         img.style.height="100%";
         table.rows[x].cells[y].appendChild(img);
@@ -21,7 +21,7 @@ function placeA(x,y,n){
     if(n==2){
         img.src="./images/${stone[0]}.png";
         img=document.createElement("img");
-        img.src="./images/${stone[1]}_last.png";
+        img.src=`./images/${stone[1]}_last.png`;
         img.style.width="100%";
         img.style.height="100%";
         table.rows[x].cells[y].appendChild(img);
