@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width", initial-scale=1>
@@ -14,7 +13,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            position:relative;
         }
         html, body {
             margin: 0;
@@ -37,11 +35,18 @@
         #table2{
             position: absolute;
             background-color: rgba(0,0,0,0);
-            border-collapse : collapse;
+            border-collapse : collapse;  
+        }
+        #background{
+            position: absolute;
+            width: min(90vh,90vw);
+            height: min(90vh,90vw);
+            background-color: yellow;
         }
     </style>
 </head>
 <body>
+    <div id="background"></div>
     <table id="table1">
         <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
         <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
@@ -78,12 +83,10 @@
     <script type="text/javascript" src="./script/MCTS.js"></script>
     <script type="text/javascript" src="./script/win.js"></script>
     <script type="text/javascript" src="./script/board.js"></script>
-<div>
-<ins class="kakao_ad_area" style="display:none;"
-data-ad-unit = "DAN-lN2GyrRvfweUgfpD"
-data-ad-width = "320"
-data-ad-height = "50"></ins>
-</div>
-<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    <ins class="kakao_ad_area" style="display:none;"
+    data-ad-unit = "DAN-lN2GyrRvfweUgfpD"
+    data-ad-width = "320"
+    data-ad-height = "50"></ins>
+    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
 </body>
 </html>
