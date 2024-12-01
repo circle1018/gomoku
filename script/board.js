@@ -47,7 +47,7 @@ function search(cnt,h1,square,n){
         if(win(index.x,index.y,1)){
             h1.textContent="LOSE<br>Tap to Replay";
             document.onmousedown=function leftClick(){
-                location.replace();
+                location.replace("/");
             };
             square.style.backgroundColor="rgba(255,255,255,0.8)";
             done=1;
@@ -85,7 +85,7 @@ table.addEventListener("click",function(event){
     if(win(x,y,2)){
         h1.textContent="WIN<br>Tap to Replay";
         document.onmousedown=function leftClick(){
-            location.replace();
+            location.replace("/");
         };
         square.style.backgroundColor="rgba(255,255,255,0.8)";
         done=1;
