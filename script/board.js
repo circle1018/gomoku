@@ -45,8 +45,7 @@ function search(cnt,h1,square,n){
         p=p[index.x*N+index.y];
         placeA(index.x,index.y,1);
         if(win(index.x,index.y,1)){
-            h1.textContent=`LOSE
-Tap to Replay`;
+            h1.textContent="LOSE\nTap to Replay";
             document.onmousedown=function leftClick(){
                 location.replace("/");
             };
@@ -84,8 +83,7 @@ table.addEventListener("click",function(event){
     square.appendChild(h1);
     document.body.appendChild(square);
     if(win(x,y,2)){
-        h1.textContent=`WIN
-Tap to Replay`;
+        h1.textContent="WIN\nTap to Replay";
         document.onmousedown=function leftClick(){
             location.replace("/");
         };
