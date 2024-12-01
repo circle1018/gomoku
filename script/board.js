@@ -133,7 +133,7 @@ if(window.matchMedia("(min-width:728px)").matches){
     });
 }
 let div=document.createElement("div");
-div.style="bottom:0;position:absolute;width:100%;";
+div.style="bottom:0;position:absolute;width:100%;justify-content: center;align-items: center;";
 div.appendChild(advertisment);
 document.body.appendChild(div);
 let script=document.createElement("script");
