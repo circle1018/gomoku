@@ -71,19 +71,14 @@ table.addEventListener("click",function(event){
     doing=1;
     placeA(x,y,2);
     const square=document.createElement('div');
-    square.style.backgroundColor="rgba(255,255,255,0.5)";
-    square.style.zIndex="500";
-    square.style.width="100%";
-    square.style.height="100%";
-    square.style.margin=0;
-    square.style.padding=0;
-    document.body.appendChild(square);
+    square.className="trans-background";
 
     const h1=document.createElement("h1");
-    h1.textContent="Thinking(0%)";
+    h1.textContent="Thinking";
     h1.style.position="absolute";
-    h1.style.zIndex="1000";
-    document.body.appendChild(h1);
+    h1.style.fontSize="5em";
+    square.appendChild(h1);
+    document.body.appendChild(square);
     if(win(x,y,2)){
         h1.textContent="WIN";
         square.style.backgroundColor="rgba(255,255,255,0.8)";
