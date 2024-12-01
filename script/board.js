@@ -1,5 +1,5 @@
 const table=document.getElementById("table2");
-let done=0,doing=0,Acnt=0;
+let done=0,doing=0;
 let stone=["black","white"];
 let img=document.createElement("img");
 function placeA(x,y,n){
@@ -53,7 +53,6 @@ function search(cnt,h1,square,n){
         doing=0;
         square.remove();
         h1.remove();
-        Acnt+=2;
         return;
     }
     for(let i=0;i<100;i++){
@@ -65,8 +64,9 @@ function search(cnt,h1,square,n){
 }
 table.addEventListener("click",function(event){
     if(done||doing)return;
-    const x=event.target.parentNode.rowIndex;
-    const y=event.target.cellIndex;
+    let x=event.target.parentNode.rowIndex;
+    let y=event.target.cellIndex;
+    if(!A[7][7])x=7,y=7;
     if(A[x][y]||y>N-1||x>N-1||y<0||x<0)return;
     doing=1;
     placeA(x,y,2);
@@ -83,23 +83,6 @@ table.addEventListener("click",function(event){
         h1.textContent="WIN";
         square.style.backgroundColor="rgba(255,255,255,0.8)";
         done=1;
-        return;
-    }
-    if(Acnt==0){
-        let index=[];
-        for(let i=6;i<8;i++){
-            for(let j=6;j<8;j++){
-                if(!A[i][j])index.push({x:i,y:j});
-            }
-        }
-        index=index[getRandom(0,index.length-1)];
-        placeA(index.x,index.y,1);
-        win(index.x,index.y,1);
-        p={win:0,visit:0};
-        square.remove();
-        h1.remove();
-        doing=0;
-        Acnt++;
         return;
     }
     setTimeout(function(){
@@ -119,3 +102,42 @@ for(let i=0;i<N;i++){
         table.rows[i].cells[j].style.border='none';
     }
 }
+
+const board=document.getElementById('board-container');
+const container=document.getElementById('container');
+const cells=document.querySelectorAll('th,td');
+let advertisment=document.createElement("ins");
+advertisment.setAttribute("class","kakao_ad_area");
+advertisment.style="display:none";
+if(window.matchMedia("(min-width:728px)").matches){
+    advertisment.setAttribute("data-ad-unit","DAN-IlKDM4p10tJd1i3l");
+    advertisment.setAttribute("data-ad-width","728");
+    advertisment.setAttribute("data-ad-height","90");
+    container.style.height=`${window.innerHeight-90}px`;
+    board.style.height=`${Math.min(window.innerHeight-90,window.innerWidth)}px`;
+    board.style.width=`${Math.min(window.innerHeight-90,window.innerWidth)}px`;
+    cells.forEach(cell=>{
+        cell.style.width=`${Math.min(window.innerHeight-90,window.innerWidth)*0.06}px`;
+        cell.style.height=`${Math.min(window.innerHeight-90,window.innerWidth)*0.06}px`;
+    });
+}else{
+    advertisment.setAttribute("data-ad-unit","DAN-lN2GyrRvfweUgfpD");
+    advertisment.setAttribute("data-ad-width","320");
+    advertisment.setAttribute("data-ad-height","50");
+    container.style.height=`${window.innerHeight-50}px`;
+    board.style.height=`${Math.min(window.innerHeight-50,window.innerWidth)}px`;
+    board.style.width=`${Math.min(window.innerHeight-50,window.innerWidth)}px`;
+    cells.forEach(cell=>{
+        cell.style.width=`${Math.min(window.innerHeight-50,window.innerWidth)*0.06}px`;
+        cell.style.height=`${Math.min(window.innerHeight-50,window.innerWidth)*0.06}px`;
+    });
+}
+let div=document.createElement("div");
+div.style="bottom:0;position:absolute;width:100%;";
+div.appendChild(advertisment);
+document.body.appendChild(div);
+let script=document.createElement("script");
+script.type="text/javascript";
+script.src="//t1.daumcdn.net/kas/static/ba.min.js";
+script.async=true;
+document.body.appendChild(script);
