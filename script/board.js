@@ -45,7 +45,7 @@ function search(cnt,h1,square,n){
         placeA(index.x,index.y,1);
         if(win(index.x,index.y,1)){
             h1.textContent="LOSE";
-            square.style.backgroundColor="rgba(255,255,255,0.5)";
+            square.style.backgroundColor="rgba(255,255,255,0.8)";
             done=1;
             return;
         }
@@ -70,7 +70,7 @@ table.addEventListener("click",function(event){
     doing=1;
     placeA(x,y,2);
     const square=document.createElement('div');
-    square.style.backgroundColor="rgba(255,255,255,0.2)";
+    square.style.backgroundColor="rgba(255,255,255,0.5)";
     square.style.zIndex="500";
     square.style.width="100%";
     square.style.height="100%";
@@ -85,7 +85,7 @@ table.addEventListener("click",function(event){
     document.body.appendChild(h1);
     if(win(x,y,2)){
         h1.textContent="WIN";
-        square.style.backgroundColor="rgba(255,255,255,0.5)";
+        square.style.backgroundColor="rgba(255,255,255,0.8)";
         done=1;
         return;
     }
