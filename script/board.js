@@ -111,8 +111,13 @@ table.addEventListener("click",function(event){
         search(10000,h1,square,1);
     },0);
 });
-placeA(7,7,1);
-win(7,7,1);
+function start(){
+    if(document.querySelector('input[name="stone"]:checked').value=="White"){
+        placeA(7,7,1);
+        win(7,7,1);
+    }
+    document.getElementsByClassName("trans-background")[0].remove();
+}
 for(let i=0;i<N;i++){
     for(let j=0;j<N;j++){
         table.rows[i].cells[j].style.border='none';
