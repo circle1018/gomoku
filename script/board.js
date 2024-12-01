@@ -19,7 +19,7 @@ function placeA(x,y,n){
         table.rows[x].cells[y].appendChild(img);
     }
     if(n==2){
-        img.src="./images/${stone[0]}.png";
+        img.src=`./images/${stone[0]}.png`;
         img=document.createElement("img");
         img.src=`./images/${stone[1]}_last.png`;
         img.style.width="100%";
