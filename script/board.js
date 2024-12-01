@@ -2,7 +2,6 @@ const table=document.getElementById("table2");
 let done=0,doing=0;
 let stone=["black","white"];
 let img=document.createElement("img");
-console.log("Hello, World");
 function placeA(x,y,n){
     A[x][y]=n;
     for(let i=-1;i<=1;i++){
@@ -91,7 +90,6 @@ table.addEventListener("click",function(event){
         search(10000,h1,square,1);
     },0);
 });
-console.log("Hello, World");
 function start(){
     if(document.querySelector('input[name="stone"]:checked').value=="White"){
         placeA(7,7,1);
@@ -105,7 +103,6 @@ for(let i=0;i<N;i++){
     }
 }
 
-console.log("Hello, World");
 const board=document.getElementById('board-container');
 const container=document.getElementById('container');
 const cells=document.querySelectorAll('th,td');
@@ -135,7 +132,6 @@ if(window.matchMedia("(min-width:728px)").matches){
         cell.style.height=`${Math.min(window.innerHeight-50,window.innerWidth)*0.06}px`;
     });
 }
-console.log("Hello, World");
 let div=document.createElement("div");
 div.style="bottom:0;position:absolute;width:100%;";
 div.appendChild(advertisment);
