@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width", initial-scale=1>
     <meta charset="utf-8">
@@ -83,12 +83,28 @@
     <script type="text/javascript" src="./script/MCTS.js"></script>
     <script type="text/javascript" src="./script/win.js"></script>
     <script type="text/javascript" src="./script/board.js"></script>
-    <div style="bottom:0;position:absolute;width:100%;">
-        <ins class="kakao_ad_area" style="display:none;"
-        data-ad-unit = "DAN-lN2GyrRvfweUgfpD"
-        data-ad-width = "320"
-        data-ad-height = "50"></ins>
-    </div>
-    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    <script>
+        let advertisment=document.createElement("ins");
+        advertisment.setAttribute("class","kakao_ad_area");
+        advertisment.style="display:none";
+        if(window.matchMedia("(min-width:728px)").matches){
+            advertisment.setAttribute("data-ad-unit","DAN-IlKDM4p10tJd1i3l");
+            advertisment.setAttribute("data-ad-width","728");
+            advertisment.setAttribute("data-ad-height","90");
+        }else{
+            advertisment.setAttribute("data-ad-unit","DAN-lN2GyrRvfweUgfpD");
+            advertisment.setAttribute("data-ad-width","320");
+            advertisment.setAttribute("data-ad-height","50");
+        }
+        let div=document.createElement("div");
+        div.style="bottom:0;position:absolute;width:100%;";
+        div.appendChild(advertisment);
+        document.body.appendChild(div);
+        let script=document.createElement("script");
+        script.type="text/javascript";
+        script.src="//t1.daumcdn.net/kas/static/ba.min.js";
+        script.async=true;
+        document.body.appendChild(script);
+    </script>
 </body>
 </html>
