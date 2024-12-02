@@ -16,14 +16,18 @@
             margin: 0;
             padding: 0;
         }
-        h1{
+        b{
             text-align: center;
+            font-size:24px;
         }
         th,td{
             border: 1px solid #000;
             padding: 0;
             margin: 0;
             box-sizing: border-box;
+        }
+        label{
+            font-size: 14px;
         }
         #board-container{
             display: flex;
@@ -57,8 +61,7 @@
         }
         #selection-window{
             position: absolute;
-            padding-left: 5vmin;
-            padding-right: 5vmin;
+            padding: 10px;
             width: 300px;
             height: 400px;
             background-color: rgb(200,200,200);
@@ -114,28 +117,27 @@
     </div>
     <div class="trans-background">
         <div id="selection-window">
-            <h1 style="font-size:1.5rem">Your Stone</h1>
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <b>Your Stone</b>
+            </div>
             <div style="display: flex; justify-content: center; width: 100%;">
                 <form>
-                    <input type="radio" name="stone" id="black" value="Black" style="font-size: 1rem;" checked><label for="black">Black</label>
-                    <input type="radio" name="stone" value="White" id="white" style="font-size: 1rem;"><label for="white">White</label>
+                    <input type="radio" name="stone" id="black" value="Black" checked><label for="black">Black</label>
+                    <input type="radio" name="stone" id="white" value="White"><label for="white">White</label>
                 </form>
+            </div>
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <b>Rule</b>
+            </div>
+            <div style="display: flex; justify-content: center; width: 100%;">
                 <form>
-                    <input type="radio" name="rule" id="free" value="free" style="font-size: 1rem;" checked><label for="free">Freestyle Gomoku</label>
-                    <input type="radio" name="rule" value="standard" id="standard" style="font-size: 1rem;"><label for="standard">Standard Gomoku</label>
+                    <input type="radio" name="rule" id="free" value="free" checked><label for="free">Freestyle Gomoku</label>
+                    <input type="radio" name="rule" id="standard" value="standard"><label for="standard">Standard Gomoku</label>
                 </form>
             </div>
             <div style="display: flex; justify-content: center; width: 100%;">
                 <button type="button" style="border: none;" onclick="start();">Start</button>
             </div>
-            <!---<p>
-                <div style="display: flex; justify-content: center; width: 100%;">
-                    <ins class="kakao_ad_area" style="display:none;"
-                    data-ad-unit = "DAN-2Wx3QxsmySXa33Xo"
-                    data-ad-width = "250"
-                    data-ad-height = "250"></ins>
-                </div>
-            </p>--->
         </div>
     </div>
     <script src="./script/MCTS.js"></script>

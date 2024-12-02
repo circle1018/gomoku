@@ -142,8 +142,3 @@ let div=document.createElement("div");
 div.style="bottom:0;position:absolute;width:100%;justify-content: center;align-items: center;display: flex;";
 div.appendChild(advertisment);
 document.body.appendChild(div);
-// let script=document.createElement("script");
-// script.type="text/javascript";
-// script.src="//t1.daumcdn.net/kas/static/ba.min.js";
-// script.async=true;
-// document.body.appendChild(script);
