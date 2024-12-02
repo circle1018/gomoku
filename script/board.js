@@ -13,15 +13,19 @@ function placeA(x,y,n){
     }
     if(n==1){
         img.src=`./images/${stone[1]}.png`;
+        img.alt=`Gomoku ${stone[1]} stone`;
         img=document.createElement("img");
         img.src=`./images/${stone[0]}_last.png`;
+        img.alt=`Gomoku last ${stone[0]} stone`;
         img.style.width="100%";
         img.style.height="100%";
         table.rows[x].cells[y].appendChild(img);
     }
     if(n==2){
         img.src=`./images/${stone[0]}.png`;
+        img.alt=`Gomoku ${stone[0]} stone`;
         img=document.createElement("img");
+        img.alt=`Gomoku last ${stone[1]} Stone`;
         img.src=`./images/${stone[1]}_last.png`;
         img.style.width="100%";
         img.style.height="100%";
