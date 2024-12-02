@@ -62,11 +62,11 @@ function search(cnt,b,square,n){
     if(p.visit==0){
         let result=candidate(0);
         Cs=Array.from(Array(N),()=>Array(N).fill(0));
-        for(let i=0;i<5;i++){
+        for(let i=0;i<result.length;i++){
             Cs[result[i][0]][result[i][1]]=1;
         }
     }
-    for(let i=0;i<100;i++){
+    for(let i=0;i<Math.ceil(cnt/100);i++){
         MCTS(p,n,1);
         p.visit++;
     }
@@ -102,7 +102,7 @@ table.addEventListener("click",function(event){
     }
     setTimeout(function(){
         p={win:0,visit:0};
-        search(10000,b,square,1);
+        search(2000,b,square,1);
     },0);
 });
 function start(){

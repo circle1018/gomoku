@@ -8,12 +8,12 @@ function candidate(depth,num,ni,nj){
         let index=[];
         for(let i=0;i<N;i++){
             for(let j=0;j<N;j++){
-                if(C[i][j]<1)continue;
-                index.push({value:score[i][j],index:[i,j]});
+                if(A[i][j]||C[i][j]<0)continue;
+                index.push({value:score[i][j]*8+C[i][j],index:[i,j]});
             }
         }
         index.sort((a,b)=>b.value-a.value);
-        return index.slice(0,5).map(item=>item.index);
+        return index.slice(0,3).map(item=>item.index);
     }else{
         win(ni,nj);
         let cnt=0;
