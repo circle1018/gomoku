@@ -137,15 +137,15 @@ if(window.matchMedia("(min-width:728px)").matches){
         cell.style.height=`${Math.min(window.innerHeight-90,window.innerWidth)*0.06}px`;
     });
 }else{
-    advertisment.setAttribute("data-ad-unit","DAN-lN2GyrRvfweUgfpD");
+    advertisment.setAttribute("data-ad-unit","DAN-QQ1Rd0zcFoD469HR");
     advertisment.setAttribute("data-ad-width","320");
-    advertisment.setAttribute("data-ad-height","50");
-    container.style.height=`${window.innerHeight-50}px`;
-    board.style.height=`${Math.min(window.innerHeight-50,window.innerWidth)}px`;
-    board.style.width=`${Math.min(window.innerHeight-50,window.innerWidth)}px`;
+    advertisment.setAttribute("data-ad-height","100");
+    container.style.height=`${window.innerHeight-100}px`;
+    board.style.height=`${Math.min(window.innerHeight-100,window.innerWidth)}px`;
+    board.style.width=`${Math.min(window.innerHeight-100,window.innerWidth)}px`;
     cells.forEach(cell=>{
-        cell.style.width=`${Math.min(window.innerHeight-50,window.innerWidth)*0.06}px`;
-        cell.style.height=`${Math.min(window.innerHeight-50,window.innerWidth)*0.06}px`;
+        cell.style.width=`${Math.min(window.innerHeight-100,window.innerWidth)*0.06}px`;
+        cell.style.height=`${Math.min(window.innerHeight-100,window.innerWidth)*0.06}px`;
     });
 }
 let div=document.createElement("div");
