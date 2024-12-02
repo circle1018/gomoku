@@ -13,7 +13,7 @@ function candidate(depth,num,ni,nj){
             }
         }
         index.sort((a,b)=>b.value-a.value);
-        return index.slice(0,3).map(item=>item.index);
+        return index.slice(0,4).map(item=>item.index);
     }else{
         win(ni,nj);
         let cnt=0;
