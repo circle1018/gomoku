@@ -1,4 +1,5 @@
 const table=document.getElementById("table2");
+const board_container=document.getElementById("board-container");
 let done=0,doing=0;
 let stone=["black","white"];
 let img=document.createElement("img");
@@ -27,7 +28,7 @@ function placeA(x,y,n){
         table.rows[x].cells[y].appendChild(img);
     }
 }
-function search(cnt,h1,square,n){
+function search(cnt,b,square,n){
     if(cnt<=p.visit){
         let index=[{x:0,y:0}],win_rate=-Infinity;
         for(let i in p){
@@ -45,7 +46,7 @@ function search(cnt,h1,square,n){
         p=p[index.x*N+index.y];
         placeA(index.x,index.y,1);
         if(win(index.x,index.y,1)){
-            h1.innerText="LOSE\nTap to Replay";
+            b.innerText="LOSE\nTap to Replay";
             document.onmousedown=function leftClick(){
                 location.replace("/");
             };
@@ -55,15 +56,15 @@ function search(cnt,h1,square,n){
         }
         doing=0;
         square.remove();
-        h1.remove();
+        b.remove();
         return;
     }
     for(let i=0;i<100;i++){
         MCTS(p,n,1);
         p.visit++;
     }
-    h1.textContent=`Thinking(${(Math.min(100,p.visit/cnt*100).toFixed(0))}%)`;
-    setTimeout(function(){search(cnt,h1,square,n)},0)
+    b.textContent=`Thinking(${(Math.min(100,p.visit/cnt*100).toFixed(0))}%)`;
+    setTimeout(function(){search(cnt,b,square,n)},0)
 }
 table.addEventListener("click",function(event){
     if(done||doing)return;
@@ -76,14 +77,14 @@ table.addEventListener("click",function(event){
     const square=document.createElement('div');
     square.className="trans-background";
 
-    const h1=document.createElement("h1");
-    h1.textContent="Thinking";
-    h1.style.position="absolute";
-    h1.style.fontSize="3rem";
-    square.appendChild(h1);
+    const b=document.createElement("b");
+    b.textContent="Thinking";
+    b.style.position="absolute";
+    b.style.fontSize="44px";
     document.body.appendChild(square);
+    board_container.appendChild(b);
     if(win(x,y,2)){
-        h1.innerText="WIN\nTap to Replay";
+        b.innerText="WIN\nTap to Replay";
         document.onmousedown=function leftClick(){
             location.replace("/");
         };
@@ -93,7 +94,7 @@ table.addEventListener("click",function(event){
     }
     setTimeout(function(){
         p={win:0,visit:0};
-        search(10000,h1,square,1);
+        search(10000,b,square,1);
     },0);
 });
 function start(){
