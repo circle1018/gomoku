@@ -1,6 +1,6 @@
 const table=document.getElementById("table2");
 const board_container=document.getElementById("board-container");
-let done=0,doing=0;
+let done=0,doing=0,think;
 let stone=["black","white"];
 let img=document.createElement("img");
 function placeA(x,y,n){
@@ -94,10 +94,19 @@ table.addEventListener("click",function(event){
     }
     setTimeout(function(){
         p={win:0,visit:0};
-        search(10000,b,square,1);
+        search(think,b,square,1);
     },0);
 });
 function start(){
+    if(document.querySelector('input[name="difficulty"]:checked').value=="easy"){
+        think=5000;
+    }
+    if(document.querySelector('input[name="difficulty"]:checked').value=="medium"){
+        think=10000;
+    }
+    if(document.querySelector('input[name="difficulty"]:checked').value=="hard"){
+        think=20000;
+    }
     if(document.querySelector('input[name="stone"]:checked').value=="White"){
         placeA(7,7,1);
         win(7,7,1);
