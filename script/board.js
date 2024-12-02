@@ -59,6 +59,13 @@ function search(cnt,b,square,n){
         b.remove();
         return;
     }
+    if(p.visit==0){
+        let result=candidate(0);
+        Cs=Array.from(Array(N),()=>Array(N).fill(0));
+        for(let i=0;i<5;i++){
+            Cs[result[i][0]][result[i][1]]=1;
+        }
+    }
     for(let i=0;i<100;i++){
         MCTS(p,n,1);
         p.visit++;
@@ -81,6 +88,7 @@ table.addEventListener("click",function(event){
     b.textContent="Thinking";
     b.style.position="absolute";
     b.style.fontSize="44px";
+    b.style.zIndex="500";
     document.body.appendChild(square);
     board_container.appendChild(b);
     if(win(x,y,2)){
