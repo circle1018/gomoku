@@ -48,9 +48,9 @@ function search(cnt,b,square,n){
             }else if(rate==win_rate)index.push({x:Math.floor(ind/N),y:ind%N});
         }
         index=index[getRandom(0,index.length-1)];
-        track.push([index.x,index.y]);
-        track_cnt++;
         track.length=track_cnt;
+        track_cnt++;
+        track.push([index.x,index.y]);
         placeA(index.x,index.y,1);
         if(win(index.x,index.y,1)){
             b.innerText="LOSE\nTap to Replay";
@@ -81,9 +81,9 @@ table.addEventListener("click",function(event){
     if(A[x][y]||y>N-1||x>N-1||y<0||x<0)return;
     doing=1;
     placeA(x,y,2);
-    track.push([x,y]);
-    track_cnt++;
     track.length=track_cnt;
+    track_cnt++;
+    track.push([x,y]);
     const square=document.createElement('div');
     square.className="trans-background";
 
@@ -113,9 +113,9 @@ function start(){
     if(document.querySelector('input[name="stone"]:checked').value=="White"){
         placeA(7,7,1);
         win(7,7,1);
-        track.push([7,7]);
-        track_cnt++;
         track.length=track_cnt;
+        track_cnt++;
+        track.push([7,7]);
     }else stone=["white","black"];
     document.getElementsByClassName("trans-background")[0].remove();
 }
