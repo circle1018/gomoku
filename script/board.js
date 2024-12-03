@@ -124,7 +124,6 @@ function start(){
     track_icon();
 }
 function track_icon(){
-    return;
     let turn=(stone[0]=="black"?0:1);
     if(track_cnt==(turn+1)%2)icon[0].src="./images/fast_back_block.png";
     else icon[0].src="./images/fast_back.png";
@@ -165,16 +164,16 @@ if(window.matchMedia("(min-width:728px)").matches){
 }
 board.style.height=`${size}px`;
 board.style.width=`${size}px`;
-background.style.height=`${size*0.87}px`;
-background.style.width=`${size*0.87}px`;
+background.style.height=`${size*0.75}px`;
+background.style.width=`${size*0.75}px`;
 cells.forEach(cell=>{
-    cell.style.width=`${size*0.058}px`;
-    cell.style.height=`${size*0.058}px`;
+    cell.style.width=`${size*0.05}px`;
+    cell.style.height=`${size*0.05}px`;
 });
 for(let i=0;i<icon.length;i++){
-    icon[i].style.width=`${size*0.058}px`;
-    icon[i].style.height=`${size*0.058}px`;
-    icon[i].style.left=`${size*0.058*(i+10.5)}px`;
+    icon[i].style.width=`${size*0.05}px`;
+    icon[i].style.height=`${size*0.05}px`;
+    icon[i].style.left=`${size*0.05*(i+10.5)}px`;
     icon[i].addEventListener('click',function(){
         let turn=(stone[0]=="black"?0:1);
         if(icon[i].alt=="back")track_cnt=Math.max((turn+1)%2,track_cnt-2);
