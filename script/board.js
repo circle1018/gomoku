@@ -102,16 +102,8 @@ table.addEventListener("click",function(event){
     },0);
 });
 function start(){
-    if(document.querySelector('input[name="difficulty"]:checked').value=="easy"){
-        think=5000;
-    }
-    if(document.querySelector('input[name="difficulty"]:checked').value=="medium"){
-        think=10000;
-    }
-    if(document.querySelector('input[name="difficulty"]:checked').value=="hard"){
-        think=20000;
-    }
-    if(document.querySelector('input[name="stone"]:checked').value=="White"){
+  think=Number(document.getElementById('difficulty').textContent);
+ if(document.querySelector('input[name="stone"]:checked').value=="White"){
         placeA(7,7,1);
         win(7,7,1);
     }else stone=["white","black"];
