@@ -51,6 +51,7 @@ function search(cnt,b,square,n){
         track.length=track_cnt;
         track_cnt++;
         track.push([index.x,index.y]);
+        track_icon();
         placeA(index.x,index.y,1);
         if(win(index.x,index.y,1)){
             b.innerText="LOSE\nTap to Replay";
@@ -84,6 +85,7 @@ table.addEventListener("click",function(event){
     track.length=track_cnt;
     track_cnt++;
     track.push([x,y]);
+    track_icon();
     const square=document.createElement('div');
     square.className="trans-background";
 
@@ -116,8 +118,20 @@ function start(){
         track.length=track_cnt;
         track_cnt++;
         track.push([7,7]);
+        track_icon();
     }else stone=["white","black"];
     document.getElementsByClassName("trans-background")[0].remove();
+}
+function track_icon(){
+    let turn=(stone[0]=="black"?0:1);
+    if(track_cnt==(turn+1)%2)icon[0].src="./images/fast_back_block.png";
+    else icon[0].src="./images/fast_back.png";
+    if(track_cnt==Math.max((turn+1)%2,track_cnt-2))icon[1].src="./images/back_block.png";
+    else icon[1].src="./images/back.png";
+    if(track_cnt==Math.min(track.length,track_cnt+2))icon[2].src="./images/front_block.png";
+    else icon[2].src="./images/front.png"
+    if(track_cnt==track.length)icon[3].src="./images/fast_front_block.png";
+    else icon[3].src="./images/fast_front.png";
 }
 for(let i=0;i<N;i++){
     for(let j=0;j<N;j++){
@@ -178,6 +192,7 @@ for(let i=0;i<icon.length;i++){
         for(let i=0;i<track_cnt;i++){
             placeA(track[i][0],track[i][1],(turn+i)%2+1);
         }
+        track_icon();
     });
 };
 let div=document.createElement("div");
