@@ -102,7 +102,7 @@ table.addEventListener("click",function(event){
     },0);
 });
 function start(){
-  think=Number(document.getElementById('difficulty').textContent);
+  think=Number(document.getElementById('difficulty').value);
  if(document.querySelector('input[name="stone"]:checked').value=="White"){
         placeA(7,7,1);
         win(7,7,1);
