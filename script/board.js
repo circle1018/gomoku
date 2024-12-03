@@ -155,17 +155,15 @@ if(window.matchMedia("(min-width:728px)").matches){
     advertisment.setAttribute("data-ad-height","90");
     container.style.height=`${window.innerHeight-90}px`;
     size=Math.min(window.innerHeight-90,window.innerWidth);
-    console.log(window.innerHeight-90+" "+window.innerWidth+" "+size);
+    board.style.height=`${window.innerHeight-90}px`;
 }else{
     advertisment.setAttribute("data-ad-unit","DAN-QQ1Rd0zcFoD469HR");
     advertisment.setAttribute("data-ad-width","320");
     advertisment.setAttribute("data-ad-height","100");
     container.style.height=`${window.innerHeight-100}px`;
     size=Math.min(window.innerHeight-100,window.innerWidth);
-    console.log(window.innerHeight-100+" "+window.innerWidth+" "+size);
+    board.style.height=`${window.innerHeight-100}px`;
 }
-board.style.height=`${size}px`;
-board.style.width=`${size}px`;
 background.style.height=`${size*0.87}px`;
 background.style.width=`${size*0.87}px`;
 cells.forEach(cell=>{
