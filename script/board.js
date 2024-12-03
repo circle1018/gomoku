@@ -155,25 +155,27 @@ if(window.matchMedia("(min-width:728px)").matches){
     advertisment.setAttribute("data-ad-height","90");
     container.style.height=`${window.innerHeight-90}px`;
     size=Math.min(window.innerHeight-90,window.innerWidth);
+    console.log(window.innerHeight-90+" "+window.innerWidth+" "+size);
 }else{
     advertisment.setAttribute("data-ad-unit","DAN-QQ1Rd0zcFoD469HR");
     advertisment.setAttribute("data-ad-width","320");
     advertisment.setAttribute("data-ad-height","100");
     container.style.height=`${window.innerHeight-100}px`;
     size=Math.min(window.innerHeight-100,window.innerWidth);
+    console.log(window.innerHeight-100+" "+window.innerWidth+" "+size);
 }
 board.style.height=`${size}px`;
 board.style.width=`${size}px`;
-background.style.height=`${size*0.75}px`;
-background.style.width=`${size*0.75}px`;
+background.style.height=`${size*0.87}px`;
+background.style.width=`${size*0.87}px`;
 cells.forEach(cell=>{
-    cell.style.width=`${size*0.05}px`;
-    cell.style.height=`${size*0.05}px`;
+    cell.style.width=`${size*0.058}px`;
+    cell.style.height=`${size*0.058}px`;
 });
 for(let i=0;i<icon.length;i++){
-    icon[i].style.width=`${size*0.05}px`;
-    icon[i].style.height=`${size*0.05}px`;
-    icon[i].style.left=`${size*0.05*(i+10.5)}px`;
+    icon[i].style.width=`${size*0.058}px`;
+    icon[i].style.height=`${size*0.058}px`;
+    icon[i].style.left=`${size*0.058*(i+10.5)}px`;
     icon[i].addEventListener('click',function(){
         let turn=(stone[0]=="black"?0:1);
         if(icon[i].alt=="back")track_cnt=Math.max((turn+1)%2,track_cnt-2);
