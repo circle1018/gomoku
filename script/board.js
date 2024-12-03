@@ -2,6 +2,7 @@ const table=document.getElementById("table2");
 const board_container=document.getElementById("board-container");
 let done=0,doing=0,think;
 let stone=["black","white"];
+let track=[],track_cnt=0;
 let img=document.createElement("img");
 function placeA(x,y,n){
     A[x][y]=n;
@@ -47,6 +48,9 @@ function search(cnt,b,square,n){
             }else if(rate==win_rate)index.push({x:Math.floor(ind/N),y:ind%N});
         }
         index=index[getRandom(0,index.length-1)];
+        track.push([index.x,index.y]);
+        track_cnt++;
+        track.length=track_cnt;
         placeA(index.x,index.y,1);
         if(win(index.x,index.y,1)){
             b.innerText="LOSE\nTap to Replay";
@@ -77,6 +81,9 @@ table.addEventListener("click",function(event){
     if(A[x][y]||y>N-1||x>N-1||y<0||x<0)return;
     doing=1;
     placeA(x,y,2);
+    track.push([x,y]);
+    track_cnt++;
+    track.length=track_cnt;
     const square=document.createElement('div');
     square.className="trans-background";
 
@@ -102,10 +109,13 @@ table.addEventListener("click",function(event){
     },0);
 });
 function start(){
-  think=Number(document.getElementById('difficulty').value);
- if(document.querySelector('input[name="stone"]:checked').value=="White"){
+    think=Number(document.getElementById('difficulty').value);
+    if(document.querySelector('input[name="stone"]:checked').value=="White"){
         placeA(7,7,1);
         win(7,7,1);
+        track.push([7,7]);
+        track_cnt++;
+        track.length=track_cnt;
     }else stone=["white","black"];
     document.getElementsByClassName("trans-background")[0].remove();
 }
@@ -115,35 +125,61 @@ for(let i=0;i<N;i++){
     }
 }
 
-const board=document.getElementById('board-container');
-const container=document.getElementById('container');
-const cells=document.querySelectorAll('th,td');
-let advertisment=document.createElement("ins");
+const board=document.getElementById("board-container");
+const container=document.getElementById("container");
+const cells=document.querySelectorAll("th,td");
+const background=document.getElementById("background");
+const icon=document.getElementsByClassName("icon");
+const advertisment=document.createElement("ins");
 advertisment.setAttribute("class","kakao_ad_area");
 advertisment.style="display:none";
+let size;
 if(window.matchMedia("(min-width:728px)").matches){
     advertisment.setAttribute("data-ad-unit","DAN-IlKDM4p10tJd1i3l");
     advertisment.setAttribute("data-ad-width","728");
     advertisment.setAttribute("data-ad-height","90");
     container.style.height=`${window.innerHeight-90}px`;
-    board.style.height=`${Math.min(window.innerHeight-90,window.innerWidth)}px`;
-    board.style.width=`${Math.min(window.innerHeight-90,window.innerWidth)}px`;
-    cells.forEach(cell=>{
-        cell.style.width=`${Math.min(window.innerHeight-90,window.innerWidth)*0.06}px`;
-        cell.style.height=`${Math.min(window.innerHeight-90,window.innerWidth)*0.06}px`;
-    });
+    size=Math.min(window.innerHeight-90,window.innerWidth);
 }else{
     advertisment.setAttribute("data-ad-unit","DAN-QQ1Rd0zcFoD469HR");
     advertisment.setAttribute("data-ad-width","320");
     advertisment.setAttribute("data-ad-height","100");
     container.style.height=`${window.innerHeight-100}px`;
-    board.style.height=`${Math.min(window.innerHeight-100,window.innerWidth)}px`;
-    board.style.width=`${Math.min(window.innerHeight-100,window.innerWidth)}px`;
-    cells.forEach(cell=>{
-        cell.style.width=`${Math.min(window.innerHeight-100,window.innerWidth)*0.06}px`;
-        cell.style.height=`${Math.min(window.innerHeight-100,window.innerWidth)*0.06}px`;
-    });
+    size=Math.min(window.innerHeight-100,window.innerWidth);
 }
+board.style.height=`${size}px`;
+board.style.width=`${size}px`;
+background.style.height=`${size*0.87}px`;
+background.style.width=`${size*0.87}px`;
+cells.forEach(cell=>{
+    cell.style.width=`${size*0.058}px`;
+    cell.style.height=`${size*0.058}px`;
+});
+for(let i=0;i<icon.length;i++){
+    icon[i].style.width=`${size*0.058}px`;
+    icon[i].style.height=`${size*0.058}px`;
+    icon[i].style.left=`${size*0.058*(i+10.5)}px`;
+    icon[i].addEventListener('click',function(){
+        let turn=(stone[0]=="black"?0:1);
+        if(icon[i].alt=="back")track_cnt=Math.max((turn+1)%2,track_cnt-2);
+        if(icon[i].alt=="front")track_cnt=Math.min(track.length,track_cnt+2);
+        if(icon[i].alt=="fast_back")track_cnt=(turn+1)%2;
+        if(icon[i].alt=="fast_front")track_cnt=track.length;
+        A=Array.from(Array(N),()=>Array(N).fill(0));
+        C=Array.from(Array(N),()=>Array(N).fill(0));
+        for(let i=0;i<track.length;i++){
+            let element=table.rows[track[i][0]].cells[track[i][1]];
+            if(element.firstChild){
+                element.removeChild(element.firstChild);
+            }else{
+                break;
+            }
+        }
+        for(let i=0;i<track_cnt;i++){
+            placeA(track[i][0],track[i][1],(turn+i)%2+1);
+        }
+    });
+};
 let div=document.createElement("div");
 div.style="bottom:0;position:absolute;width:100%;justify-content: center;align-items: center;display: flex;";
 div.appendChild(advertisment);
