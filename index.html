@@ -139,18 +139,8 @@
                 <b>Difficulty</b>
             </div>
             <div style="display: flex; justify-content: center; width: 100%;">
-                <form>
-                    <input type="radio" name="difficulty" id="easy" value="easy" checked><label for="easy">Easy</label>
-                    <input type="radio" name="difficulty" id="medium" value="medium"><label for="medium">Medium</label>
-                    <input type="radio" name="difficulty" id="hard" value="hard"><label for="hard">Hard</label>
-                </form>
+                <input type="range" id="difficulty" min="100" max="21000" value="10000" step="1">
             </div>
-
-
-   <input type="range" id="difficultyRange" min="1" max="10" value="5" step="1">
-    <span id="difficultyValue">5</span>
-
-
             <div style="display: flex; justify-content: center; width: 100%;">
                 <button type="button" style="border: none;" onclick="start();">Start</button>
             </div>
