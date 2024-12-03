@@ -124,7 +124,6 @@ function start(){
     track_icon();
 }
 function track_icon(){
-    return;
     let turn=(stone[0]=="black"?0:1);
     if(track_cnt==(turn+1)%2)icon[0].src="./images/fast_back_block.png";
     else icon[0].src="./images/fast_back.png";
