@@ -8,11 +8,11 @@ function getRandom(min,max){
 function MCTS(P,num,depth){
     //UCT score
     let index=[],weight=-1;
-    if(P.visit==0&&depth<5){
+    if(P.visit==0&&depth<3){
         let result=candidate(0);
         for(let i=0;i<result.length;i++)P[result[i][0]*15+result[i][1]]={win:0,visit:0};
     }
-    if(depth<5){
+    if(depth<3){
         for(let obj in P){
             if(isNaN(Number(obj)))continue;
             let i=Math.floor(obj/15);
