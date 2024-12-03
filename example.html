@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width", initial-scale=1>
+    <meta charset="utf-8">
+    <title>Gomoku</title>
+    <meta name="description" content="Play Gomoku with AI! You can enojoy Gomoku with various rules and difficulties. Play it right now to improve your gomoku skills.">
+    <meta name="keywords" content="games, gomoku-game">
+    <meta property="og:title" content="Gomoku"/>
+    <meta property="og:description" content="Play Gomoku!"/>
+    <meta property="og:url" content="https//circle1018.github.io"/>
+    <style>
+        body{
+            display: flex;
+            overflow: hidden;
+        }
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        #board-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        #background{
+            position: absolute;
+            background-color: yellow;
+        }
+        .trans-background{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 100;
+        }
+        .icon{
+            position: absolute;
+            bottom: 100%;
+        }
+        #container{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="board-container">
+            <div id="background">
+                <!-- <img alt="fast_back" class="icon" src="./images/fast_back.png">
+                <img alt="back" class="icon" src="./images/back.png">
+                <img alt="front" class="icon" src="./images/front.png">
+                <img alt="fast_front" class="icon" src="./images/fast_front.png"> -->
+            </div>
+        </div>
+    </div>
+    <div class="trans-background"></div>
+</body>
+</html>

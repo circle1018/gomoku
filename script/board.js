@@ -124,6 +124,7 @@ function start(){
     track_icon();
 }
 function track_icon(){
+    return;
     let turn=(stone[0]=="black"?0:1);
     if(track_cnt==(turn+1)%2)icon[0].src="./images/fast_back_block.png";
     else icon[0].src="./images/fast_back.png";
@@ -149,7 +150,7 @@ const advertisment=document.createElement("ins");
 advertisment.setAttribute("class","kakao_ad_area");
 advertisment.style="display:none";
 let size;
-if(window.matchMedia("(min-width:728px)").matches&&0){
+if(window.matchMedia("(min-width:728px)").matches){
     advertisment.setAttribute("data-ad-unit","DAN-IlKDM4p10tJd1i3l");
     advertisment.setAttribute("data-ad-width","728");
     advertisment.setAttribute("data-ad-height","90");
