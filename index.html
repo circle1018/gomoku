@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width", initial-scale=1>
+    <meta charset="utf-8">
+    <title>Gomoku</title>
+    <meta name="description" content="Play Gomoku with AI!">
+    <meta name="keywords" content="games, gomoku-game">
+
+    <meta property="og:title" content="Gomoku"/>
+    <meta property="og:description" content="Play Gomoku!"/>
+    <meta property="og:url" content="https//circle1018.github.io/gomoku"/>
+    <meta property="og:image" content="./images/game.png">
+    <meta property="og:site_name" content="games">
+    <meta property="og:locale" content="en_US">
+    <style>
+        body{
+            display: flex;
+        }
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        b{
+            font-size: 24px;
+            text-align: center;
+        }
+        th{
+            border: 1px solid #000;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            line-height: 0;
+        }
+        label{
+            font-size: 14px;
+        }
+        #game-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        #range-label{
+            display: flex;
+            justify-content: space-between;
+        }
+        #table1{
+            position: absolute;
+            background-color: yellow;
+            border-collapse : collapse;
+        }
+        #table2{
+            position: absolute;
+            background-color: rgba(0,0,0,0);
+            border-collapse: collapse;
+        }
+        #background{
+            position: absolute;
+            background-color: yellow;
+        }
+        .trans-background{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 100;
+        }
+        .icon{
+            position: absolute;
+            bottom: 100%;
+            width: 0px;
+            height: 0px;
+        }
+        #selection-window{
+            position: absolute;
+            padding: 10px;
+            width: 300px;
+            height: 300px;
+            background-color: rgb(200,200,200);
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="background">
+            <img alt="fast_back" class="icon" src="./images/fast_back_block.png">
+            <img alt="back" class="icon" src="./images/back_block.png">
+            <img alt="front" class="icon" src="./images/front_block.png">
+            <img alt="fast_front" class="icon" src="./images/fast_front_block.png">
+        </div>
+        <table id="table1">
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+        </table>
+        <table id="table2">
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+        </table>
+    </div>
+    <div class="trans-background">
+        <div id="selection-window">
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <b>Your Stone</b>
+            </div>
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <form>
+                    <input type="radio" name="stone" id="black" value="Black" checked><label for="black">Black</label>
+                    <input type="radio" name="stone" id="white" value="White"><label for="white">White</label>
+                </form>
+            </div>
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <b>Rule</b>
+            </div>
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <form>
+                    <input type="radio" name="rule" id="free" value="free" checked><label for="free">Freestyle Gomoku</label>
+                    <input type="radio" name="rule" id="standard" value="standard"><label for="standard">Standard Gomoku</label>
+                </form>
+            </div>
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <b>Difficulty</b>
+            </div>
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <input type="range" id="difficulty" min="100" max="21000" value="10000" step="1" style="width: 100%;">
+            </div>
+            <div id="range-label">
+                <span>Easy</span>
+                <span>Hard</span>
+            </div>
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <button type="button" style="border: none;" onclick="start();">Start</button>
+            </div>
+        </div>
+    </div>
+    <script src="./script/AI.js"></script>
+    <script src="./script/candidate.js"></script>
+    <script src="./script/win.js"></script>
+    <script src="./script/board.js"></script>
+    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+</body>
+</html>
